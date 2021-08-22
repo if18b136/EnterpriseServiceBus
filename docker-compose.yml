@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    ports:
+      - 2181:2181
+    container_name: zookeeper
+
+  kafka:
+    image: wurstmeister/kafka:2.13-2.7.0
+    ports:
+      - 9093:9093
+      - 9092:9092
+    container_name: kafka
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_LISTENERS: DOCKER://0.0.0.0:9092,LOCAL://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: DOCKER://kafka:9092,LOCAL://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: DOCKER:PLAINTEXT,LOCAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: DOCKER
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_CREATE_TOPICS: part1:1:1, part4:4:1, part16:16:1 #name:partitions:replicas(:optional cleanup policy)
