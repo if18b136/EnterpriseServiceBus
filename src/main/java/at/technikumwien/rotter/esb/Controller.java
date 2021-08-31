@@ -1,7 +1,7 @@
 package at.technikumwien.rotter.esb;
 
-import at.technikumwien.rotter.esb.Kafka.Consumer;
-import at.technikumwien.rotter.esb.Kafka.Producer;
+import at.technikumwien.rotter.esb.Kafka.KafkaConsumer;
+import at.technikumwien.rotter.esb.Kafka.KafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/cmd")
 public class Controller {
-    private final Producer producer;
-    private final Consumer consumer;
+    private final KafkaProducer kafkaProducer;
+    private final KafkaConsumer kafkaConsumer;
     private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
     @Autowired
-    public Controller(Producer producer, Consumer consumer) {
-        this.producer=producer;
-        this.consumer=consumer;
+    public Controller(KafkaProducer kafkaProducer, KafkaConsumer kafkaConsumer) {
+        this.kafkaProducer = kafkaProducer;
+        this.kafkaConsumer = kafkaConsumer;
     }
 
     @GetMapping("/single")
@@ -32,7 +32,7 @@ public class Controller {
         long start = System.currentTimeMillis();
         sendMultipleMessages("part1");
         LOGGER.info("Producer sending time with 1 Partition: {}", System.currentTimeMillis()-start);
-        LOGGER.info("Time according to timestamps with 1 Partition: {}", consumer.getTime());
+        LOGGER.info("Time according to timestamps with 1 Partition: {}", kafkaConsumer.getTime());
     }
 
     @GetMapping("/multiple/4")
@@ -40,7 +40,7 @@ public class Controller {
         long start = System.currentTimeMillis();
         sendMultipleMessages("part4");
         LOGGER.info("Producer sending time with 4 Partitions: {}", System.currentTimeMillis()-start);
-        LOGGER.info("Time according to timestamps with 4 Partitions: {}", consumer.getTime());
+        LOGGER.info("Time according to timestamps with 4 Partitions: {}", kafkaConsumer.getTime());
     }
 
     @GetMapping("/multiple/16")
@@ -48,12 +48,12 @@ public class Controller {
         long start = System.currentTimeMillis();
         sendMultipleMessages("part16");
         LOGGER.info("Producer sending time with 16 partitions: {}", System.currentTimeMillis()-start);
-        LOGGER.info("Time according to timestamps with 16 partitions: {}", consumer.getTime());
+        LOGGER.info("Time according to timestamps with 16 partitions: {}", kafkaConsumer.getTime());
     }
 
     private void sendMultipleMessages(String topic) {
         for(int i = 0; i < 1_000_000; i++) {
-            producer.send(topic);
+            kafkaProducer.send(topic);
         }
     }
 }

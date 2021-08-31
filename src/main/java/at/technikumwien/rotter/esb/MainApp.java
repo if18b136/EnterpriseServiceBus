@@ -1,6 +1,5 @@
 package at.technikumwien.rotter.esb;
 
-import at.technikumwien.rotter.esb.Kafka.Producer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

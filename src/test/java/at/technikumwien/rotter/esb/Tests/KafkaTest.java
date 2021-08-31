@@ -1,7 +1,7 @@
 package at.technikumwien.rotter.esb.Tests;
 
-import at.technikumwien.rotter.esb.Kafka.Consumer;
-import at.technikumwien.rotter.esb.Kafka.Producer;
+import at.technikumwien.rotter.esb.Kafka.KafkaConsumer;
+import at.technikumwien.rotter.esb.Kafka.KafkaProducer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import java.util.List;
 @SpringBootTest
 public class KafkaTest {
     @Autowired
-    private Producer producer;
+    private KafkaProducer kafkaProducer;
 
     @Autowired
-    private Consumer consumer;
+    private KafkaConsumer kafkaConsumer;
 
     private final byte[] msg_10 = new byte[10];
     private final byte[] msg_100 = new byte[100];
@@ -44,16 +44,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part1",msg_10);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part1",msg_10);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -61,16 +61,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part1",msg_100);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part1",msg_100);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -78,16 +78,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part1",msg_1000);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part1",msg_1000);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     /* ----------- Multiple Message Sending Test 4 partitions 100 runs for averaging ----------- */
@@ -96,16 +96,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part4",msg_10);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part4",msg_10);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -113,16 +113,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part4",msg_100);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part4",msg_100);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -130,16 +130,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part4",msg_1000);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part4",msg_1000);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     /* ----------- Multiple Message Sending Test 16 partitions 100 runs for averaging ----------- */
@@ -148,16 +148,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part16",msg_10);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part16",msg_10);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -165,16 +165,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part16",msg_100);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part16",msg_100);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
     @Test
@@ -182,16 +182,16 @@ public class KafkaTest {
         List<Long> starts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
         for(int i=0; i<100;i++) {
-            starts.add(consumer.getTimestampsSize());
+            starts.add(kafkaConsumer.getTimestampsSize());
             for(int j=0; j<5_00;j++)
-                producer.send("part16",msg_1000);
-            times.add(consumer.getTime());
+                kafkaProducer.send("part16",msg_1000);
+            times.add(kafkaConsumer.getTime());
         }
         for(Long start : starts)
             Assertions.assertEquals(start,0L);
 
         long avg = (long) times.stream().mapToLong(l -> l).average().getAsDouble();
-        System.out.println("Average time over 1000 iterations: " + avg + "ms");
+        System.out.println("Average time over 100 iterations: " + avg + "ms");
     }
 
 

@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 @Service
-public class Consumer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Consumer.class);
+public class KafkaConsumer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
     private List<Long[]> timestamps = new ArrayList<>();
 
-    public Consumer(){}
+    public KafkaConsumer(){}
 
     @KafkaListener(topics = "part1")
     public void consumeSaveTimestamp1(ConsumerRecord<?,?> consumerRecord){
