@@ -25,3 +25,15 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       KAFKA_CREATE_TOPICS: part1:1:1, part4:4:1, part16:16:1 #name:partitions:replicas(:optional cleanup policy)
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    expose:
+      - 1883
+      - 9001
+    ports:
+      - 1883:1883
+      - 9001:9001
+    container_name: mosquitto
