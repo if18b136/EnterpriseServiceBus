@@ -43,7 +43,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10 );
 
             getMockEndpoint("mock:result").expectedMessageCount(100);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -61,7 +61,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10 );
 
             getMockEndpoint("mock:result").expectedMessageCount(500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -79,7 +79,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -97,7 +97,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -115,7 +115,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10 );
 
             getMockEndpoint("mock:result").expectedMessageCount(2000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -134,7 +134,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_100 );
 
             getMockEndpoint("mock:result").expectedMessageCount(100);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -152,7 +152,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_100 );
 
             getMockEndpoint("mock:result").expectedMessageCount(500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -170,7 +170,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_100 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -188,7 +188,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_100 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -206,7 +206,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_100 );
 
             getMockEndpoint("mock:result").expectedMessageCount(2000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -225,7 +225,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_1000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(100);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -243,7 +243,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_1000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -261,7 +261,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_1000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -279,7 +279,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_1000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -297,7 +297,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_1000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(2000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -316,7 +316,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(100);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -334,7 +334,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -352,7 +352,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -370,7 +370,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(1500);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
@@ -388,7 +388,7 @@ public class CamelTest extends CamelTestSupport {
                 template.sendBody("direct:start", str_10000 );
 
             getMockEndpoint("mock:result").expectedMessageCount(2000);
-            //getMockEndpoint("mock:result").assertIsSatisfied();
+            getMockEndpoint("mock:result").assertIsSatisfied();
             times.add(System.currentTimeMillis()-start);
             //System.out.println("Number of messages received: " + getMockEndpoint("mock:result").getReceivedCounter());
         }
