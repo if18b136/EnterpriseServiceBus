@@ -34,9 +34,13 @@ public class KafkaConsumer {
         timestamps.add(new Long[]{consumerRecord.timestamp(),System.currentTimeMillis()});
     }
     
-    public long getTime() {
+    public long getTime(int messages) {
         long time = 0;
-        try{Thread.sleep(100);} catch (Exception e) { e.printStackTrace();}
+        while (timestamps.size() < messages) {
+            System.out.println("before: " + timestamps.size());
+            try{Thread.sleep(10);} catch (Exception e) { e.printStackTrace();}
+            System.out.println("after: " + timestamps.size());
+        }
         if(!timestamps.isEmpty()) {
             System.out.println("Number of messages received: " + timestamps.size());
             time = timestamps.get(timestamps.size()-1)[1] - timestamps.get(0)[0];
