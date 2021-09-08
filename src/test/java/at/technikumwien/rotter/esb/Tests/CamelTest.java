@@ -398,8 +398,7 @@ public class CamelTest extends CamelTestSupport {
 
     @AfterAll
     static void getResults() {
-
-        results.forEach((str,l) -> System.out.println(str + " - " + l));
+        results.forEach((str,l) -> System.out.println(str + " - " + l + " ms"));
     }
 
 }
